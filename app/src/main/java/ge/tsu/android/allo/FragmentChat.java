@@ -37,6 +37,10 @@ public class FragmentChat extends Fragment {
         listView=view.findViewById(R.id.list);
         listView.setAdapter(fragmentChatAdapter);
         fragmentChatAdapter=new FragmentChatAdapter(getContext(), 0, new ArrayList<AllMessages>());
+          if(storage.getMessage( "sms", AllMessages[].class)!=null) {
+            AllMessages[] allMessages= (AllMessages[]) storage.getMessage( "sms", AllMessages[].class);
+            fragmentChatAdapter.addAll(allMessages);
+        }
         editText=view.findViewById(R.id.text);
         view.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
